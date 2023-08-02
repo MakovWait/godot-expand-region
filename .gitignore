@@ -15,4 +15,8 @@ mono_crash.*.json
 
 .idea/
 
+addons/godot-last-tabs-switcher
+addons/godot-script-tabs
+addons/find-everywhere
+
 trash/
