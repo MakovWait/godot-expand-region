@@ -12,6 +12,7 @@
 
 
 /addons/gdUnit4        export-ignore
+/tests                 export-ignore
 
 # github page assets
 /assets                export-ignore
