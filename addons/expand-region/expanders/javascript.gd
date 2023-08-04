@@ -7,6 +7,7 @@ var expand_to_semantic_unit = preload("res://addons/expand-region/expanders/expa
 var expand_to_symbols = preload("res://addons/expand-region/expanders/expand_to_symbols.gd").new()
 var expand_to_subword = preload("res://addons/expand-region/expanders/expand_to_subword.gd").new()
 var expand_to_word = preload("res://addons/expand-region/expanders/expand_to_word.gd").new()
+var expand_to_line = preload("res://addons/expand-region/expanders/expand_to_line.gd").new()
 
 
 func expand(string, start, end):
@@ -46,6 +47,15 @@ func expand(string, start, end):
 	if result:
 		result["expand_stack"] = expand_stack
 		return result
+	
+#	expand_stack.append("line")
+#
+#	result = expand_to_line.expand_to_line(string, start, end)
+#	if result:
+#		result["expand_stack"] = expand_stack
+#		return result
+#
+#	return null
 
 
 func expand_agains_line(string, start, end):
