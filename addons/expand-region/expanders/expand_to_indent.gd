@@ -7,9 +7,15 @@ var _INDENT_RE = RegEx.create_from_string("^(?P<spaces>\\s*)")
 const utils = preload("res://addons/expand-region/utils.gd")
 
 
+func comment_line(string, line):
+	var trimmed = utils.pysubstr(string, line["start"], line["end"]).strip_edges()
+	return trimmed.begins_with("#")
+
+
 func empty_line(string, line):
-	return utils.pysubstr(string, line["start"], line["end"]).strip_edges().is_empty()
+	var trimmed = utils.pysubstr(string, line["start"], line["end"]).strip_edges()
 #	return not string[line["start"]:line["end"]].strip()
+	return trimmed.is_empty()
 
 
 func get_indent(string, line):
@@ -34,7 +40,7 @@ func _expand_to_indent(string, start, end):
 		before_line = utils.get_line(string, pos, pos)
 		var before_indent = get_indent(string, before_line)
 		# done if the line has a lower indent
-		if not indent <= before_indent and not empty_line(string, before_line):
+		if not indent <= before_indent and not empty_line(string, before_line) and not comment_line(string, before_line):
 			break
 		# if the indent equals the lines indent than update the start
 		if not empty_line(string, before_line) and indent == before_indent:
@@ -49,7 +55,7 @@ func _expand_to_indent(string, start, end):
 		after_line = utils.get_line(string, pos, pos)
 		var after_indent = get_indent(string, after_line)
 		# done if the line has a lower indent
-		if not indent <= after_indent and not empty_line(string, after_line):
+		if not indent <= after_indent and not empty_line(string, after_line) and not comment_line(string, after_line):
 			break
 		# move the end
 		if not empty_line(string, after_line):
