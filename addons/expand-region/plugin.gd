@@ -26,19 +26,27 @@ func _on_editor_settings_changed():
 	_load_shortcuts()
 
 
-func _shortcut_input(event: InputEvent) -> void:
-	if _expand_sh and _expand_sh.matches_event(event) and event.pressed:
-		var code_edit = _get_current_code_edit()
-#		if code_edit and code_edit.has_selection():
-		var cursor: Cursor = Cursor.from_text_edit(code_edit)
+func _expand():
+	var code_edit = _get_current_code_edit()
+	if not code_edit or not code_edit.has_focus():
+		return
+	for caret in code_edit.get_caret_count():
+		var cursor: Cursor = Cursor.from_text_edit(code_edit, caret)
 		var flat = cursor.to_flat(code_edit.text)
 		var result = gdscript.expand(
 			flat.string, flat.start, flat.end
 		)
-		print(result)
 		if result:
-			Cursor.from_flat(code_edit.text, result.start, result.end).select(code_edit)
-			
+			print('{"type:": "%s", "expand_stack": "%s"}' % [result.get("type", "unknown"), result.get("expand_stack", [])])
+			Cursor.from_flat(
+				code_edit.text, result.start, result.end
+			).select(code_edit, caret)
+	code_edit.merge_overlapping_carets()
+
+
+func _shortcut_input(event: InputEvent) -> void:
+	if _expand_sh and _expand_sh.matches_event(event) and event.pressed:
+		_expand()
 
 
 func _load_shortcuts():

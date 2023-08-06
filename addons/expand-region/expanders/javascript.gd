@@ -11,10 +11,12 @@ var expand_to_line = preload("res://addons/expand-region/expanders/expand_to_lin
 
 
 func expand(string, start, end):
+	var expand_stack = []
+	var result
+	
 	var selection_is_in_string = expand_to_quotes.expand_to_quotes(string, start, end)
 	if selection_is_in_string:
 		var string_result = expand_agains_string(selection_is_in_string["string"], start - selection_is_in_string["start"], end - selection_is_in_string["start"])
-		
 		if string_result:
 			string_result["start"] = string_result["start"] + selection_is_in_string["start"]
 			string_result["end"] = string_result["end"] + selection_is_in_string["start"]
@@ -33,9 +35,9 @@ func expand(string, start, end):
 			line_result["string"] = utils.substr(string, line_result)
 			return line_result
 
-	var expand_stack = ["semantic_unit"]
+	expand_stack.append("semantic_unit")
 
-	var result = expand_to_semantic_unit.expand_to_semantic_unit(string, start, end)
+	result = expand_to_semantic_unit.expand_to_semantic_unit(string, start, end)
 
 	if result:
 		result["expand_stack"] = expand_stack
@@ -47,26 +49,17 @@ func expand(string, start, end):
 	if result:
 		result["expand_stack"] = expand_stack
 		return result
-	
-#	expand_stack.append("line")
-#
-#	result = expand_to_line.expand_to_line(string, start, end)
-#	if result:
-#		result["expand_stack"] = expand_stack
-#		return result
-#
-#	return null
 
 
 func expand_agains_line(string, start, end):
 	var expand_stack = []
-
-	expand_stack.append("subword")
-
-	var result = expand_to_subword.expand_to_subword(string, start, end)
-	if result:
-		result["expand_stack"] = expand_stack
-		return result
+	var result
+#	expand_stack.append("subword")
+#
+#	result = expand_to_subword.expand_to_subword(string, start, end)
+#	if result:
+#		result["expand_stack"] = expand_stack
+#		return result
 
 	expand_stack.append("word")
 
@@ -82,12 +75,12 @@ func expand_agains_line(string, start, end):
 		result["expand_stack"] = expand_stack
 		return result
 
-	expand_stack.append("semantic_unit")
-
-	result = expand_to_semantic_unit.expand_to_semantic_unit(string, start, end)
-	if result:
-		result["expand_stack"] = expand_stack
-		return result
+#	expand_stack.append("semantic_unit")
+#
+#	result = expand_to_semantic_unit.expand_to_semantic_unit(string, start, end)
+#	if result:
+#		result["expand_stack"] = expand_stack
+#		return result
 
 	expand_stack.append("symbols")
 
@@ -96,22 +89,21 @@ func expand_agains_line(string, start, end):
 		result["expand_stack"] = expand_stack
 		return result
 
-	# expand_stack.append("line")
-
-	# result = expand_to_line.expand_to_line(string, start, end)
-	# if result:
-	#   result["expand_stack"] = expand_stack
-	#   return result
-
-	# return None
+#	expand_stack.append("line")
+#
+#	result = expand_to_line.expand_to_line(string, start, end)
+#	if result:
+#		result["expand_stack"] = expand_stack
+#		return result
 
 
 func expand_agains_string(string, start, end):
 	var expand_stack = []
+	var result
 
 	expand_stack.append("semantic_unit")
 
-	var result = expand_to_semantic_unit.expand_to_semantic_unit(string, start, end)
+	result = expand_to_semantic_unit.expand_to_semantic_unit_original(string, start, end)
 	if result:
 		result["expand_stack"] = expand_stack
 		return result
