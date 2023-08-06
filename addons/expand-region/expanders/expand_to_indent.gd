@@ -38,9 +38,11 @@ func _expand_to_indent(string, start, end):
 		if pos <= 0:
 			break
 		before_line = utils.get_line(string, pos, pos)
+		if comment_line(string, before_line):
+			continue
 		var before_indent = get_indent(string, before_line)
 		# done if the line has a lower indent
-		if not indent <= before_indent and not empty_line(string, before_line) and not comment_line(string, before_line):
+		if not indent <= before_indent and not empty_line(string, before_line):
 			break
 		# if the indent equals the lines indent than update the start
 		if not empty_line(string, before_line) and indent == before_indent:
@@ -53,9 +55,11 @@ func _expand_to_indent(string, start, end):
 		if pos >= len(string):
 			break
 		after_line = utils.get_line(string, pos, pos)
+		if comment_line(string, after_line):
+			continue
 		var after_indent = get_indent(string, after_line)
 		# done if the line has a lower indent
-		if not indent <= after_indent and not empty_line(string, after_line) and not comment_line(string, after_line):
+		if not indent <= after_indent and not empty_line(string, after_line):
 			break
 		# move the end
 		if not empty_line(string, after_line):
