@@ -7,16 +7,16 @@ func expand_to_semantic_unit(string, startIndex, endIndex):
 #	return expand_to_semantic_unit_original(string, startIndex, endIndex)
 	
 	var result
-	
+
+	result = expand_to_semantic_method(string, startIndex, endIndex)
+	if result:
+		return result
+
 	result = expand_to_semantic_owner(string, startIndex, endIndex)
 	if result:
 		return result
 
 	result = expand_to_semantic_property(string, startIndex, endIndex)
-	if result:
-		return result
-
-	result = expand_to_semantic_method(string, startIndex, endIndex)
 	if result:
 		return result
 	
@@ -187,7 +187,7 @@ func expand_to_semantic_owner(string, startIndex, endIndex):
 
 func expand_to_semantic_method(string, startIndex, endIndex):
 	var symbols = "([{)]}"
-	var breakSymbols = "#/:+ ,;=&|\n\r"
+	var breakSymbols = ".#/:+ ,;=&|\n\r"
 	var lookBackBreakSymbols = breakSymbols + "([{"
 	var lookForwardBreakSymbols = breakSymbols + ")]}"
 	var symbolsRe = RegEx.create_from_string(
