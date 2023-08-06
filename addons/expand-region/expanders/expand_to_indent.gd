@@ -19,6 +19,11 @@ func empty_line(string, line):
 
 
 func get_indent(string, line):
+	if comment_line(string, line):
+		var first_line = utils.get_line(string, line.start, line.start)
+		var pos = first_line["end"] + 1
+		if pos < len(string):
+			return get_indent(string, utils.get_line(string, pos, pos))
 	var line_str = utils.pysubstr(string, line["start"], line["end"])
 	var m = _INDENT_RE.search(line_str)
 	if m == null:  # should never happen
@@ -38,8 +43,6 @@ func _expand_to_indent(string, start, end):
 		if pos <= 0:
 			break
 		before_line = utils.get_line(string, pos, pos)
-		if comment_line(string, before_line):
-			continue
 		var before_indent = get_indent(string, before_line)
 		# done if the line has a lower indent
 		if not indent <= before_indent and not empty_line(string, before_line):
@@ -55,8 +58,6 @@ func _expand_to_indent(string, start, end):
 		if pos >= len(string):
 			break
 		after_line = utils.get_line(string, pos, pos)
-		if comment_line(string, after_line):
-			continue
 		var after_indent = get_indent(string, after_line)
 		# done if the line has a lower indent
 		if not indent <= after_indent and not empty_line(string, after_line):
