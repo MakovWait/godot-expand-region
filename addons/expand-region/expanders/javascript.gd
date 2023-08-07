@@ -82,12 +82,12 @@ func expand_agains_line(string, start, end):
 #		result["expand_stack"] = expand_stack
 #		return result
 
-	expand_stack.append("symbols")
-
-	result = expand_to_symbols.expand_to_symbols(string, start, end)
-	if result:
-		result["expand_stack"] = expand_stack
-		return result
+#	expand_stack.append("symbols")
+#
+#	result = expand_to_symbols.expand_to_symbols(string, start, end)
+#	if result:
+#		result["expand_stack"] = expand_stack
+#		return result
 
 #	expand_stack.append("line")
 #
