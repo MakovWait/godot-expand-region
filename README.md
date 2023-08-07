@@ -6,6 +6,14 @@
 
 <p align="center">Porting <a href="https://github.com/aronwoost/sublime-expand-region">sublime-expand-region</a> to godot4 with some tweaks.</p>
 
+Default shortcuts
+--
+<kbd>ALT+W</kbd> - expand region
+
+<kbd>ALT+SHIFT+W</kbd> - shrink region
+
+Shortcuts can be configured via <code>Editor Settings/Addons/Expand Region</code>
+
 How to install
 -----------------
 
