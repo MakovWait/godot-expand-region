@@ -86,29 +86,29 @@ func _update_editor_settings():
 
 func _update_editor_settings_sh(setting_name, default):
 	var editor_settings = get_editor_interface().get_editor_settings()
-	if not editor_settings.has_setting(setting_name):
-		editor_settings.set_setting(setting_name, default.call())
 	editor_settings.add_property_info({
 		"name": setting_name,
 		"type": TYPE_OBJECT,
 	})
+	if not editor_settings.has_setting(setting_name):
+		editor_settings.set_setting(setting_name, default.call())
 
 
 func _update_editor_settings_logging(default):
 	var editor_settings = get_editor_interface().get_editor_settings()
-	if not editor_settings.has_setting(SETTINGS_LOGGING):
-		editor_settings.set_setting(SETTINGS_LOGGING, default)
 	editor_settings.add_property_info({
 		"name": SETTINGS_LOGGING,
 		"type": TYPE_BOOL,
 	})
+	if not editor_settings.has_setting(SETTINGS_LOGGING):
+		editor_settings.set_setting(SETTINGS_LOGGING, default)
 
 
 func _default_expand_sh():
 	var sh = Shortcut.new()
 	var ev = InputEventKey.new()
 	ev.device = -1
-	ev.ctrl_pressed = true
+	ev.alt_pressed = true
 	ev.keycode = 87
 	sh.events = [ev]
 	return sh
@@ -118,7 +118,7 @@ func _default_shrink_sh():
 	var sh = Shortcut.new()
 	var ev = InputEventKey.new()
 	ev.device = -1
-	ev.ctrl_pressed = true
+	ev.alt_pressed = true
 	ev.shift_pressed = true
 	ev.keycode = 87
 	sh.events = [ev]
