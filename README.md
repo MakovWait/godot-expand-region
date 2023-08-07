@@ -2,7 +2,7 @@
 
 Expand your region with godot-expand-region.
 
-<p align="center"><img src="https://github.com/MakovWait/godot-expand-region/blob/main/assets/expand-region-preview.gif" width="30%"/></p>
+<p align="center"><img src="https://github.com/MakovWait/godot-expand-region/blob/main/assets/expand-region.gif" width="30%"/></p>
 
 <p align="right">Porting <a href="https://github.com/aronwoost/sublime-expand-region">sublime-expand-region</a> to godot4 with some tweaks.</p>
 
