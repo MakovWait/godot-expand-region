@@ -1,7 +1,10 @@
-# godot-expand-region
-Expand your region with godot-expand-region. 
+<h3 style="text-align: center;">godot-expand-region</h3>
 
-Porting <a href="https://github.com/aronwoost/sublime-expand-region">sublime-expand-region</a> to godot4 with some tweaks.
+<p align="center">Expand your region with godot-expand-region.</p>
+
+<p align="center"><img src="https://github.com/MakovWait/godot-expand-region/blob/main/assets/expand-region-preview.gif" width="100%"/></p>
+
+<p align="right">Porting <a href="https://github.com/aronwoost/sublime-expand-region">sublime-expand-region</a> to godot4 with some tweaks.</p>
 
 How to install
 -----------------
@@ -11,7 +14,7 @@ Copy the contents of `addons/expand-region` into the same folder in your project
 
 or plug with <a href="https://github.com/imjp94/gd-plug">gd-plug</a>:
 ```gdscript
-    plug("MakovWait/godot-expand-region", {"exclude": ["addons/gdUnit4"]})
+plug("MakovWait/godot-expand-region", {"exclude": ["addons/gdUnit4"]})
 ```
 
 About
