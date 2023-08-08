@@ -8,9 +8,9 @@
 
 Default shortcuts
 --
-<kbd>ALT+W</kbd> - expand region
+<kbd>ALT+W</kbd> - expand region (<code>macos</code><kbd>CONTROL+W</kbd>)
 
-<kbd>ALT+SHIFT+W</kbd> - shrink region
+<kbd>ALT+SHIFT+W</kbd> - shrink region (<code>macos</code><kbd>CONTROL+SHIFT+W</kbd>)
 
 Shortcuts can be configured via <code>Editor Settings/Addons/Expand Region</code>
 
