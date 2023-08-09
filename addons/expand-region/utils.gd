@@ -46,6 +46,12 @@ static func selection_contain_linebreaks(string, s, e):
 	return '\n' in string.substr(s, e - s)
 
 
+static func is_escaped_linebreak(string, idx):
+	var symbol = string.substr(idx, 1)
+	var prev_symbol = string.substr(idx - 1, 1)
+	return symbol == '\n' and prev_symbol == '\\'
+
+
 static func get_line(string: String, startIndex, endIndex):
 	var linebreakRe = RegEx.create_from_string('\n')
 

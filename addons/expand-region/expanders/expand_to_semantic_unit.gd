@@ -58,8 +58,9 @@ func expand_to_semantic_unit_original(string, startIndex, endIndex):
 			var symbol = result.get_string()
 
 			if(symbol in lookBackBreakSymbols and len(symbolStack) == 0):
-				newStartIndex = searchIndex + 1
-				break
+				if not utils.is_escaped_linebreak(string, searchIndex):
+					newStartIndex = searchIndex + 1
+					break
 
 			if symbol in symbols:
 				if len(symbolStack) > 0 and symbolStack[len(symbolStack) - 1] == counterparts[symbol]:
@@ -91,8 +92,9 @@ func expand_to_semantic_unit_original(string, startIndex, endIndex):
 			var symbol = result.get_string()
 
 			if len(symbolStack) == 0 and symbol in lookForwardBreakSymbols:
-				newEndIndex = searchIndex;
-				break
+				if not utils.is_escaped_linebreak(string, searchIndex):
+					newEndIndex = searchIndex;
+					break
 
 			if symbol in symbols:
 				if len(symbolStack) > 0 and symbolStack[len(symbolStack) - 1] == counterparts[symbol]:
@@ -156,8 +158,9 @@ func expand_to_semantic_owner(string, startIndex, endIndex):
 			var symbol = result.get_string()
 
 			if(symbol in lookBackBreakSymbols and len(symbolStack) == 0):
-				newStartIndex = searchIndex + 1
-				break
+				if not utils.is_escaped_linebreak(string, searchIndex):
+					newStartIndex = searchIndex + 1
+					break
 
 			if symbol in symbols:
 				if len(symbolStack) > 0 and symbolStack[len(symbolStack) - 1] == counterparts[symbol]:
@@ -288,8 +291,9 @@ func expand_to_semantic_property(string, startIndex, endIndex):
 			var symbol = result.get_string()
 			
 			if symbol in lookForwardBreakSymbols:
-				newEndIndex = searchIndex;
-				break
+				if not utils.is_escaped_linebreak(string, searchIndex):
+					newEndIndex = searchIndex
+					break
 
 		if searchIndex >= len(string) - 1:
 			return null
