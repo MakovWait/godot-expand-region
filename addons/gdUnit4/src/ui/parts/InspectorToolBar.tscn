@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://tkrsqx2oxw6o" path="res://addons/gdUnit4/src/ui/assets/PlayDebug.svg" id="2_4h4dw"]
 [ext_resource type="Texture2D" uid="uid://de1q5raia84bn" path="res://addons/gdUnit4/src/ui/assets/PlayOverall.svg" id="2_s3tbo"]
-[ext_resource type="Script" path="res://addons/gdUnit4/src/ui/parts/InspectorToolBar.gd" id="3"]
+[ext_resource type="Script" uid="uid://dm4ujxgl2ptw5" path="res://addons/gdUnit4/src/ui/parts/InspectorToolBar.gd" id="3"]
 
 [node name="ToolBar" type="HBoxContainer"]
 anchors_preset = 15

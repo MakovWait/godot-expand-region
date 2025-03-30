@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0xyeci1tqebj"]
 
-[ext_resource type="Script" path="res://addons/gdUnit4/src/update/GdUnitUpdateNotify.gd" id="1_112wo"]
-[ext_resource type="Script" path="res://addons/gdUnit4/src/update/GdUnitUpdateClient.gd" id="2_18asx"]
+[ext_resource type="Script" uid="uid://bl2v0lph6l66x" path="res://addons/gdUnit4/src/update/GdUnitUpdateNotify.gd" id="1_112wo"]
+[ext_resource type="Script" uid="uid://diw0u255oaf2i" path="res://addons/gdUnit4/src/update/GdUnitUpdateClient.gd" id="2_18asx"]
 
 [node name="Control" type="Window"]
 disable_3d = true

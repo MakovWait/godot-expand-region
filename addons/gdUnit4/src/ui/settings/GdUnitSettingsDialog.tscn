@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwgat6j2u77g4"]
 
-[ext_resource type="Script" path="res://addons/gdUnit4/src/ui/settings/GdUnitSettingsDialog.gd" id="2"]
+[ext_resource type="Script" uid="uid://cw2m4adlfmtdy" path="res://addons/gdUnit4/src/ui/settings/GdUnitSettingsDialog.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c7sk0yhd52lg3" path="res://addons/gdUnit4/src/ui/assets/icon.png" id="2_w63lb"]
 [ext_resource type="PackedScene" uid="uid://dte0m2endcgtu" path="res://addons/gdUnit4/src/ui/templates/TestSuiteTemplate.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://addons/gdUnit4/src/ui/settings/GdUnitInputCapture.tscn" id="5_xu3j8"]
-[ext_resource type="Script" path="res://addons/gdUnit4/src/update/GdUnitUpdateClient.gd" id="8_2ggr0"]
+[ext_resource type="PackedScene" uid="uid://tkiaof2451bs" path="res://addons/gdUnit4/src/ui/settings/GdUnitInputCapture.tscn" id="5_xu3j8"]
+[ext_resource type="Script" uid="uid://diw0u255oaf2i" path="res://addons/gdUnit4/src/update/GdUnitUpdateClient.gd" id="8_2ggr0"]
 
 [node name="Control" type="Window"]
 disable_3d = true

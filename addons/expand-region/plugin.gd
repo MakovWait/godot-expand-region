@@ -146,7 +146,7 @@ func _get_edited_script_path():
 	if script_editor:
 		var current_editor = script_editor.get_current_editor()
 		if current_editor:
-			return current_editor.get("metadata/_edit_res_path")
+			return current_editor.get("metadata/_tab_name")
 	return null
 
 
